@@ -7,6 +7,7 @@ const NavBar = () => {
     <div className="navBar">
       <Link href="/">Home</Link>
       <Link href="/settings">Settings</Link>
+      <Link href="/redirect">Redirect</Link>
       {/* style={{ textDecoration: "none" }} */}
       {/* <NavLink className="mainNav" to="/" title="Home|Andrew Ma">
         <h2 className="hover-underline-animation">Andrew Ma</h2>
