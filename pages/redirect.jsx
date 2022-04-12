@@ -1,4 +1,10 @@
-const RedirectPage = () => {
-  return <div>Redirect Page</div>;
+import RedirectPage from "../components/Redirect/RedirectPage";
+
+const Redirect = () => {
+  return (
+    <div>
+      <RedirectPage></RedirectPage>
+    </div>
+  );
 };
-export default RedirectPage;
+export default Redirect;
