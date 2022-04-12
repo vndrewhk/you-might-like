@@ -1,0 +1,22 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  scrollbar-color: rgb(115, 115, 128) rgb(51, 51, 51);
+  scrollbar-width: thin;
+  box-sizing: border-box;
+}
+
+// .main-body {
+//   height: 150vh;
+// }
