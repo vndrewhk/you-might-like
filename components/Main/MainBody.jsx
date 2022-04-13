@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import { useState } from "react";
 import SearchBox from "../Search/SearchBox";
+import ArtistSuggestions from "./ArtistSuggestions";
 
 const MainBody = () => {
   const [artistInfo, setArtistInfo] = useState();
@@ -9,6 +10,7 @@ const MainBody = () => {
     // console.log(e);
     // console.log(searchInput.current.value);
     fetchArtistHandler(searchInput.current.value);
+
     console.log("hi");
   };
 
@@ -21,8 +23,10 @@ const MainBody = () => {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization:
-              "Bearer BQAvvYzy5kWu8kV3U7zBH5XCvIxBK9Ap3d35K0JstHe6zAb48USZb3SL-womw1-zKmU7mO_147JoHN02EQyTAXb5OlCFylM9Zm3hii5FxfQfgRBG53dG5bwOcnfFcAAI6I2pCtsALXdT0pURin-TkJI",
+            Authorization: `${localStorage.getItem(
+              "token_type"
+            )} ${localStorage.getItem("access_token")}`,
+            // "Bearer BQAvvYzy5kWu8kV3U7zBH5XCvIxBK9Ap3d35K0JstHe6zAb48USZb3SL-womw1-zKmU7mO_147JoHN02EQyTAXb5OlCFylM9Zm3hii5FxfQfgRBG53dG5bwOcnfFcAAI6I2pCtsALXdT0pURin-TkJI",
           },
         }
       );
@@ -39,6 +43,7 @@ const MainBody = () => {
 
   const logInfo = () => {
     console.log(artistInfo);
+    console.log(artistInfo.items);
   };
 
   const handleLogin = () => {
@@ -51,6 +56,9 @@ const MainBody = () => {
         Login to spotify
       </Button>
       <SearchBox submitArtistHandler={submitArtistHandler}></SearchBox>
+      {artistInfo && (
+        <ArtistSuggestions artists={artistInfo}></ArtistSuggestions>
+      )}
       <button onClick={logInfo}>log info</button>
     </div>
   );
