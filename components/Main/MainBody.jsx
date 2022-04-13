@@ -44,6 +44,7 @@ const MainBody = () => {
   const logInfo = () => {
     console.log(artistInfo);
     console.log(artistInfo.items);
+    console.log(artistInfo.items[0].images[0].url)
   };
 
   const handleLogin = () => {
@@ -57,7 +58,10 @@ const MainBody = () => {
       </Button>
       <SearchBox submitArtistHandler={submitArtistHandler}></SearchBox>
       {artistInfo && (
-        <ArtistSuggestions artists={artistInfo.items}></ArtistSuggestions>
+        <ArtistSuggestions
+          key={Math.random()}
+          artists={artistInfo.items}
+        ></ArtistSuggestions>
       )}
       <button onClick={logInfo}>log info</button>
     </div>
