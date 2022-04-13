@@ -9,7 +9,7 @@ const MainBody = () => {
     e.preventDefault();
     // console.log(e);
     // console.log(searchInput.current.value);
-    fetchArtistHandler(searchInput.current.value);
+    fetchArtistHandler(searchInput);
 
     console.log("hi");
   };
@@ -57,7 +57,7 @@ const MainBody = () => {
       </Button>
       <SearchBox submitArtistHandler={submitArtistHandler}></SearchBox>
       {artistInfo && (
-        <ArtistSuggestions artists={artistInfo}></ArtistSuggestions>
+        <ArtistSuggestions artists={artistInfo.items}></ArtistSuggestions>
       )}
       <button onClick={logInfo}>log info</button>
     </div>

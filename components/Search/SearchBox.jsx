@@ -8,7 +8,7 @@ const SearchBox = (props) => {
   const searchInput = useRef(null);
   const submitArtistHandler = props.submitArtistHandler;
   const submitHandler = (e) => {
-    submitArtistHandler(searchInput, e);
+    submitArtistHandler(searchInput.current.value, e);
     // searchInput.current.value = "";
   };
 
