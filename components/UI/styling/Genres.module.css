@@ -1,0 +1,11 @@
+.genre-container {
+  border: 2px solid red;
+  width: 25%;
+}
+.genre-tag {
+  /* display: flex;
+  justify-content: center;
+  flex-wrap: wrap; */
+  border: 2px solid blue;
+  padding-right: 1em;
+}

@@ -8,6 +8,8 @@ import ArtistBubble from "../UI/ArtistBubble";
 const ArtistSuggestions = (props) => {
   // onClick, redo original fn with new artist
   const [artists, setArtists] = useState(props.artists);
+
+  // make a redux store which pushes each clicked artist to the a store so you can follow the path down
   const fetchSimilarArtists = async (id) => {
     try {
       const response = await fetch(
