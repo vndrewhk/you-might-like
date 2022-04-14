@@ -1,11 +1,14 @@
 .genre-container {
+  display: flex;
   border: 2px solid red;
-  width: 25%;
+  width: 100%;
+  flex-grow: 1;
+  justify-content: center;
 }
 .genre-tag {
   /* display: flex;
   justify-content: center;
   flex-wrap: wrap; */
-  border: 2px solid blue;
-  padding-right: 1em;
+  border: 2px solid rgb(185, 181, 181);
+  /* padding-right: 1em; */
 }

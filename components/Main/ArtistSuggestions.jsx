@@ -4,6 +4,7 @@ import { useState } from "react";
 import ImageWithFallback from "../UI/ImageWithFallback";
 import fallBackImage from "../../assets/default-profile.png";
 import ArtistBubble from "../UI/ArtistBubble";
+import styles from "./styling/ArtistSuggestions.module.css";
 
 const ArtistSuggestions = (props) => {
   // onClick, redo original fn with new artist
@@ -67,7 +68,13 @@ const ArtistSuggestions = (props) => {
     console.log(artists[0].images[0].url);
   };
 
-  return <>{artists && <div>{artistBubbles}</div>}</>;
+  return (
+    <>
+      {artists && (
+        <div className={styles["artist-suggestions"]}>{artistBubbles}</div>
+      )}
+    </>
+  );
 };
 
 export default ArtistSuggestions;

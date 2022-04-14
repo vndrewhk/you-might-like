@@ -1,0 +1,28 @@
+.artist-bubble {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  align-items: center;
+  width: 200px;
+}
+
+.artist-info {
+  /* flex-grow: 1; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.artist-name {
+  margin: 0px;
+}
+
+.artist-image {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+}
+.genres {
+  /* flex-grow: 1; */
+}
