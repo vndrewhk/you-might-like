@@ -7,6 +7,7 @@ import { useRef } from "react";
 const SearchBox = (props) => {
   const searchInput = useRef(null);
   const submitArtistHandler = props.submitArtistHandler;
+  // maybe do it onchange so its better for user
   const submitHandler = (e) => {
     submitArtistHandler(searchInput.current.value, e);
     // searchInput.current.value = "";
@@ -15,7 +16,7 @@ const SearchBox = (props) => {
   return (
     <div>
       <Stack spacing={2} sx={{ width: 300 }}>
-        <form onSubmit={submitHandler}>
+        <form onChange={submitHandler}>
           <Autocomplete
             // key={Math.random()}
             freeSolo
