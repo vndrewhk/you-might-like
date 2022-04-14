@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState } from "react";
 import ImageWithFallback from "../UI/ImageWithFallback";
 import fallBackImage from "../../assets/default-profile.png";
+import ArtistBubble from "../UI/ArtistBubble";
 
 const ArtistSuggestions = (props) => {
   // onClick, redo original fn with new artist
@@ -41,58 +42,19 @@ const ArtistSuggestions = (props) => {
   const artistBubbles = artists.map((artist) => {
     if (artist.images.length >= 1) {
       return (
-        <div key={artist.id}>
-          <a
-            href={artist.external_urls.spotify}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h5>{artist.name}</h5>
-          </a>
-          <h6>Genres:</h6>
-
-          {/* <p>{artist.images[0].url}</p> */}
-          <ImageWithFallback
-            onClick={clickNewArtist.bind(null, artist.id)}
-            alt="artist image"
-            width="50"
-            height="50"
-            src={artist.images[0].url}
-            fallbackSrc={fallBackImage}
-          ></ImageWithFallback>
-          <p>
-            {artist.genres.map((genre) => (
-              <>{genre}</>
-            ))}
-          </p>
-        </div>
+        <ArtistBubble
+          artist={artist}
+          clickNewArtist={clickNewArtist}
+          artistImage={artist.images[0].url}
+        ></ArtistBubble>
       );
     } else {
       return (
-        <div key={artist.id}>
-          <a
-            href={artist.external_urls.spotify}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h5>{artist.name}</h5>
-          </a>
-          <h6>Genres:</h6>
-
-          <ImageWithFallback
-            onClick={clickNewArtist.bind(null, artist.id)}
-            alt="artist image"
-            width="50"
-            height="50"
-            src={fallBackImage}
-            fallbackSrc={fallBackImage}
-          ></ImageWithFallback>
-          <p>
-            {artist.genres.map((genre) => (
-              <>{genre}</>
-            ))}
-          </p>
-        </div>
+        <ArtistBubble
+          artist={artist}
+          clickNewArtist={clickNewArtist}
+          artistImage={fallBackImage}
+        ></ArtistBubble>
       );
     }
   });
