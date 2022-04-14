@@ -3,6 +3,7 @@ import fallBackImage from "../../assets/default-profile.png";
 import Genres from "./Genres";
 import GenreTag from "./GenreTag";
 import styles from "./styling/ArtistBubble.module.css";
+import GenreMax from "./GenreMax";
 const ArtistBubble = (props) => {
   const artist = props.artist;
   const clickNewArtist = props.clickNewArtist;
@@ -31,10 +32,25 @@ const ArtistBubble = (props) => {
           ></ImageWithFallback>
         </div>
       </div>
-      <Genres>
-        {artist.genres.map((genre) => (
+      <Genres artist={artist}>
+        {/* pass artist in as a prop, map it out in a diff component and display it here */}
+        {/* {artist.genres.map((genre) => (
           <GenreTag key={`${genre}_${artist.name}`}>{genre}</GenreTag>
-        ))}
+        ))} */}
+        {/* {artist.genres.map((genre) => {
+          if (artist.genres.length >= 3) {
+            return <GenreMax genres={artist.genres}></GenreMax>;
+          } else {
+            return <GenreTag key={`${genre}_${artist.name}`}>{genre}</GenreTag>;
+          }
+        })} */}
+        {artist.genres.length >= 3 ? (
+          <GenreMax artist={artist}></GenreMax>
+        ) : (
+          artist.genres.map((genre) => (
+            <GenreTag key={`${genre}_${artist.name}`}>{genre}</GenreTag>
+          ))
+        )}
       </Genres>
     </div>
   );
