@@ -19,7 +19,7 @@ const ArtistBubble = (props) => {
         >
           <h5 className={styles["artist-name"]}>{artist.name}</h5>
         </a>
-        <div>
+        <div className={styles["artist-image-container"]}>
           <ImageWithFallback
             className={styles["artist-image"]}
             onClick={clickNewArtist.bind(null, artist.id)}
