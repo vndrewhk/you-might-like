@@ -9,6 +9,7 @@ const SearchBox = (props) => {
   const submitArtistHandler = props.submitArtistHandler;
   // maybe do it onchange so its better for user
   const submitHandler = (e) => {
+    e.preventDefault();
     submitArtistHandler(searchInput.current.value, e);
     // searchInput.current.value = "";
   };
@@ -16,7 +17,7 @@ const SearchBox = (props) => {
   return (
     <div>
       <Stack spacing={2} sx={{ width: 300 }}>
-        <form onChange={submitHandler}>
+        <form onChange={submitHandler} onSubmit={submitHandler}>
           <Autocomplete
             // key={Math.random()}
             freeSolo

@@ -44,7 +44,7 @@ const MainBody = () => {
   const logInfo = () => {
     console.log(artistInfo);
     console.log(artistInfo.items);
-    console.log(artistInfo.items[0].images[0].url)
+    console.log(artistInfo.items[0].images[0].url);
   };
 
   const handleLogin = () => {
@@ -56,6 +56,7 @@ const MainBody = () => {
       <Button variant="contained" type="submit" onClick={handleLogin}>
         Login to spotify
       </Button>
+      {/* use redux for a login state */}
       <SearchBox submitArtistHandler={submitArtistHandler}></SearchBox>
       {artistInfo && (
         <ArtistSuggestions
