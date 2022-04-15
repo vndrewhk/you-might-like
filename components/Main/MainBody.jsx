@@ -1,17 +1,22 @@
 import { Button } from "@mui/material";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../store/authSlice";
 import SearchBox from "../Search/SearchBox";
 import ArtistSuggestions from "./ArtistSuggestions";
 
+
 const MainBody = () => {
+  const auth = useSelector((state) => state.auth);
   const [artistInfo, setArtistInfo] = useState();
+  // cant do it here because it would change what shows up on the suggestions
+  // probably do a separate component so that it does not affect teh search results
+  // const previousArtists = useSelector((state) => state.artists);
+  // const [artistHistory, setArtistHistory] = useState(previousArtists);
+
   const submitArtistHandler = (searchInput, e) => {
     e.preventDefault();
-    // console.log(e);
-    // console.log(searchInput.current.value);
     fetchArtistHandler(searchInput);
-
-    console.log("hi");
   };
 
   const fetchArtistHandler = async (artist) => {
@@ -23,9 +28,9 @@ const MainBody = () => {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
-            Authorization: `${localStorage.getItem(
-              "token_type"
-            )} ${localStorage.getItem("access_token")}`,
+            Authorization: `${localStorage.getItem("token_type")} ${
+              auth.access_token
+            }`,
             // "Bearer BQAvvYzy5kWu8kV3U7zBH5XCvIxBK9Ap3d35K0JstHe6zAb48USZb3SL-womw1-zKmU7mO_147JoHN02EQyTAXb5OlCFylM9Zm3hii5FxfQfgRBG53dG5bwOcnfFcAAI6I2pCtsALXdT0pURin-TkJI",
           },
         }
@@ -50,21 +55,40 @@ const MainBody = () => {
   const handleLogin = () => {
     window.location = `${process.env.NEXT_PUBLIC_AUTHORIZE_URL}?client_id=${process.env.NEXT_PUBLIC_CLIENT_ID}&redirect_uri=${process.env.NEXT_PUBLIC_REDIRECT_URL}&response_type=token&show_dialog=true`;
   };
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <div className="main-body">
-      <Button variant="contained" type="submit" onClick={handleLogin}>
-        Login to spotify
-      </Button>
-      {/* use redux for a login state */}
-      <SearchBox submitArtistHandler={submitArtistHandler}></SearchBox>
-      {artistInfo && (
-        <ArtistSuggestions
-          key={Math.random()}
-          artists={artistInfo.items}
-        ></ArtistSuggestions>
+      {!auth.access_token && (
+        <Button variant="contained" type="submit" onClick={handleLogin}>
+          Connect to spotify
+        </Button>
       )}
-      <button onClick={logInfo}>log info</button>
+
+      {/* use redux for a login state */}
+
+      {auth.access_token && (
+        <>
+          <Button onClick={handleLogout} variant="contained" type="submit">
+            Logout
+          </Button>
+
+          {/* use a key to update history everytime state is updated */}
+         
+
+          <SearchBox submitArtistHandler={submitArtistHandler}></SearchBox>
+          {artistInfo && (
+            <ArtistSuggestions
+              key={Math.random()}
+              artists={artistInfo.items}
+            ></ArtistSuggestions>
+          )}
+          <button onClick={logInfo}>log info</button>
+        </>
+      )}
     </div>
   );
 };

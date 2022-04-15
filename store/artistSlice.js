@@ -1,27 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  access_token: null,
-  token_type: "Bearer",
-  expires_in: 3600,
+  artistHistory: [],
 };
 
 const artistSlice = createSlice({
   name: "artists",
   initialState,
   reducers: {
-    login: (state, action) => {
-      state.access_token = action.payload;
+    addArtist: (state, action) => {
+      state.artistHistory = [...state.artistHistory, action.payload];
     },
-    logout: (state) => {
-      state.access_token = null;
-      //   state.token_type = null;
-      //   state.expires_in = null;
+    resetArtists: (state) => {
+      state.artistHistory = [];
     },
-    resetAuthState: () => initialState,
   },
 });
 
-export const { login, logout, resetAuthState } = artistSlice.actions;
+export const { addArtist, resetArtists } = artistSlice.actions;
 
 export default artistSlice.reducer;

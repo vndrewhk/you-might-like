@@ -1,10 +1,10 @@
 const ArtistAutoComplete = [
-  { artist: "bülow" },
-  { artist: "Macross 82-99" },
-  { artist: "IU" },
-  { artist: "Marianas Trench" },
-  { artist: "Kero Kero Bonito" },
-  { artist: "Men I Trust" },
+  // { artist: "bülow" },
+  // { artist: "Macross 82-99" },
+  // { artist: "IU" },
+  // { artist: "Marianas Trench" },
+  // { artist: "Kero Kero Bonito" },
+  // { artist: "Men I Trust" },
 ];
 
 // const AutocompleteChoices = [

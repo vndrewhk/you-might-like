@@ -15,8 +15,8 @@ const RedirectPage = () => {
     accessToken = accessToken.split("&token_type");
   }
 
-  const loginHandler = () => {
-    dispatch(login("test"));
+  const loginHandler = (accessToken) => {
+    dispatch(login(accessToken));
   };
 
   //   store asPath in localstorage
@@ -25,14 +25,14 @@ const RedirectPage = () => {
     localStorage.setItem("access_token", `${accessToken[0]}`);
     localStorage.setItem("token_type", "Bearer");
     localStorage.setItem("expires_in", "3600");
-    loginHandler();
+    loginHandler(accessToken[0]);
     // console.log(authActions.login);
     router.replace("/");
   }, []);
   return <div>Please waiting...redirecting..</div>;
 };
 
-// on load, store all the information in local storage
+// on load, store all the information in redux
 // then redirect back to main page
 // set a timeOut for X seconds, and once that's done, clear local storage? prompt a login again?
 
