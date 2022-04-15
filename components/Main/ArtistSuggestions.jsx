@@ -105,6 +105,8 @@ const ArtistSuggestions = (props) => {
 
   return (
     <>
+      {/* maybe use the length of the artist store, so that it will update eveyrtime something is added and i dont use math.random like a stinker teehee */}
+      {/* have the last of the history highlighted */}
       <History key={Math.random()}></History>
       {artists && (
         <div className={styles["artist-suggestions"]}>{artistBubbles}</div>

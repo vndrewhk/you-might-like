@@ -1,0 +1,32 @@
+.history-bubble {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 5px;
+  border: 2px solid black;
+  border-radius: 50px;
+}
+
+.artist-image-container {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 0%;
+}
+.artist-image-container:hover {
+  transform: scale(1.1);
+  transition-duration: 0.1s;
+  cursor: pointer;
+}
+.artist-image {
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 25px;
+}
+
+.artist-name {
+  margin: 0%;
+  font-size: x-small;
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+}
