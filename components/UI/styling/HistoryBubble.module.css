@@ -5,6 +5,8 @@
   padding-right: 5px;
   border: 2px solid black;
   border-radius: 50px;
+  width: 100px;
+  height: 100px;
 }
 
 .artist-image-container {

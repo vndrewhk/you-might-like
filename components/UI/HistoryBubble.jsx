@@ -4,7 +4,7 @@ import styles from "./styling/HistoryBubble.module.css";
 
 const HistoryBubble = (props) => {
   const artist = props.artist;
-  const clickNewArtist = props.clickNewArtist;
+  const clickNewArtist = props.fetchSimilarArtists;
   const artistImage = props.artistImage;
 
   return (

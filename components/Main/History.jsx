@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import HistoryBubble from "../UI/HistoryBubble";
 import styles from "./styling/History.module.css";
 
-const History = () => {
+const History = (props) => {
   const previousArtists = useSelector((state) => state.artists);
   const [artistHistory, setArtistHistory] = useState(previousArtists);
 
@@ -15,6 +15,7 @@ const History = () => {
     if (artist.images.length >= 1) {
       return (
         <HistoryBubble
+          fetchSimilarArtists={props.fetchSimilarArtists}
           artist={artist}
           clickNewArtist={clickNewArtist}
           artistImage={artist.images[0].url}
