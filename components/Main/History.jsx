@@ -1,12 +1,15 @@
-import { Typography } from "@mui/material";
+import { Fade, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import HistoryBubble from "../UI/HistoryBubble";
 import styles from "./styling/History.module.css";
 
 const History = (props) => {
   const previousArtists = useSelector((state) => state.artists);
   const [artistHistory, setArtistHistory] = useState(previousArtists);
+
+  const dispatch = useDispatch();
 
   const clickNewArtist = (id) => {
     console.log(id);
@@ -34,16 +37,24 @@ const History = (props) => {
   });
   const checkVals = () => {
     console.log(artistHistory.artistHistory);
+    // add to redux hash map
+    console.log(artistHistory.artistHistory.map((artist) => artist.genres));
   };
 
+  // const clearHistory = () => {
+  //   dispatch(resetArtists());
+  //   console.log("hi");
+  // };
   return (
-    <>
-      <div className={styles["history-container"]}>
-      
-        <div className={styles["history"]}>{previousArtistsClicked}</div>
-      </div>
-      <button onClick={checkVals}>click here :D </button>
-    </>
+    artistHistory.artistHistory.length > 0 && (
+      <>
+        <div className={styles["history-container"]}>
+          <div className={styles["history"]}>{previousArtistsClicked}</div>
+        </div>
+        {/* <button onClick={clearHistory}>Clear History</button> */}
+        <button onClick={checkVals}>click here :D </button>
+      </>
+    )
   );
 };
 

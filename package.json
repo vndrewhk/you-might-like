@@ -20,7 +20,8 @@
     "react": "18.0.0",
     "react-dom": "18.0.0",
     "react-headroom": "^3.2.0",
-    "react-redux": "^7.2.8"
+    "react-redux": "^7.2.8",
+    "react-reveal": "^1.2.2"
   },
   "devDependencies": {
     "eslint": "8.13.0",

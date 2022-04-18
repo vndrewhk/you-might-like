@@ -5,7 +5,6 @@ import { logout } from "../../store/authSlice";
 import SearchBox from "../Search/SearchBox";
 import ArtistSuggestions from "./ArtistSuggestions";
 
-
 const MainBody = () => {
   const auth = useSelector((state) => state.auth);
   const [artistInfo, setArtistInfo] = useState();
@@ -20,29 +19,31 @@ const MainBody = () => {
   };
 
   const fetchArtistHandler = async (artist) => {
-    try {
-      const response = await fetch(
-        `https://api.spotify.com/v1/search?q=${artist}&type=artist`,
-        {
-          method: "GET",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            Authorization: `${localStorage.getItem("token_type")} ${
-              auth.access_token
-            }`,
-            // "Bearer BQAvvYzy5kWu8kV3U7zBH5XCvIxBK9Ap3d35K0JstHe6zAb48USZb3SL-womw1-zKmU7mO_147JoHN02EQyTAXb5OlCFylM9Zm3hii5FxfQfgRBG53dG5bwOcnfFcAAI6I2pCtsALXdT0pURin-TkJI",
-          },
+    if (artist.length > 0) {
+      try {
+        const response = await fetch(
+          `https://api.spotify.com/v1/search?q=${artist}&type=artist`,
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+              Authorization: `${localStorage.getItem("token_type")} ${
+                auth.access_token
+              }`,
+              // "Bearer BQAvvYzy5kWu8kV3U7zBH5XCvIxBK9Ap3d35K0JstHe6zAb48USZb3SL-womw1-zKmU7mO_147JoHN02EQyTAXb5OlCFylM9Zm3hii5FxfQfgRBG53dG5bwOcnfFcAAI6I2pCtsALXdT0pURin-TkJI",
+            },
+          }
+        );
+        if (!response.ok) {
+          throw new Error("something went wrong!");
         }
-      );
-      if (!response.ok) {
-        throw new Error("something went wrong!");
-      }
 
-      const data = await response.json();
-      setArtistInfo(data.artists);
-    } catch (err) {
-      console.log(err);
+        const data = await response.json();
+        setArtistInfo(data.artists);
+      } catch (err) {
+        console.log(err);
+      }
     }
   };
 
@@ -77,7 +78,6 @@ const MainBody = () => {
           </Button>
 
           {/* use a key to update history everytime state is updated */}
-         
 
           <SearchBox submitArtistHandler={submitArtistHandler}></SearchBox>
           {artistInfo && (

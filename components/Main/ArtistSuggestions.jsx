@@ -1,4 +1,7 @@
-import { AirlineStops } from "@mui/icons-material";
+import {
+  KeyboardDoubleArrowDown,
+  KeyboardDoubleArrowUp,
+} from "@mui/icons-material";
 import Image from "next/image";
 import { useState } from "react";
 import ImageWithFallback from "../UI/ImageWithFallback";
@@ -6,7 +9,7 @@ import fallBackImage from "../../assets/default-profile.png";
 import ArtistBubble from "../UI/ArtistBubble";
 import styles from "./styling/ArtistSuggestions.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addArtist } from "../../store/artistSlice";
+import { addArtist, resetArtists } from "../../store/artistSlice";
 import History from "./History";
 
 import Collapse from "@mui/material/Collapse";
@@ -48,10 +51,11 @@ const ArtistSuggestions = (props) => {
       // here we should filter the remaining similar artists by the id in history so we dont get duplicate artists
       // setArtists(data.artists)
       setArtists(
-        data.artists.filter((artist) =>
-          !previousArtists.artistHistory
-            .map((history) => history.id)
-            .includes(artist.id)
+        data.artists.filter(
+          (artist) =>
+            !previousArtists.artistHistory
+              .map((history) => history.id)
+              .includes(artist.id)
         )
       );
     } catch (err) {
@@ -90,7 +94,8 @@ const ArtistSuggestions = (props) => {
     // add to redux
     fetchSelectedArtist(id);
   };
-
+  // should keep track of the genres counted using a hashmap, and then display it as a side value as well
+  // https://developer.spotify.com/documentation/web-api/reference/#/operations/get-recommendations
   const artistBubbles = artists.map((artist) => {
     if (artist.images.length >= 1) {
       return (
@@ -123,23 +128,34 @@ const ArtistSuggestions = (props) => {
   const toggleHistory = () => {
     setShowHistory(!showHistory);
   };
+  const clearHistory = () => {
+    dispatch(resetArtists());
+    setShowHistory(!showHistory);
+  };
 
   return (
     <>
       {/* maybe use the length of the artist store, so that it will update eveyrtime something is added and i dont use math.random like a stinker teehee */}
       {/* have the last of the history highlighted */}
       <div>
-        <Typography variant="h4" container="h4" onClick={toggleHistory}>
+        <Typography
+          className={styles["history-toggle"]}
+          variant="h4"
+          container="h4"
+          onClick={toggleHistory}
+        >
           History
+          {!showHistory && <KeyboardDoubleArrowDown></KeyboardDoubleArrowDown>}
+          {showHistory && <KeyboardDoubleArrowUp></KeyboardDoubleArrowUp>}
         </Typography>
         <Collapse in={showHistory}>
           <History
             fetchSimilarArtists={fetchSimilarArtists}
             key={Math.random()}
           ></History>
+          <button onClick={clearHistory}>Clear History</button>
         </Collapse>
       </div>
-      {/* )} */}
       {artists && (
         <div className={styles["artist-suggestions"]}>{artistBubbles}</div>
       )}

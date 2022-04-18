@@ -3,3 +3,7 @@
   border: 2px solid green;
   flex-wrap: wrap;
 }
+
+.history-toggle {
+  cursor: pointer;
+}
