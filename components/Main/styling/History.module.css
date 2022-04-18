@@ -1,5 +1,10 @@
 .history-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: wrap;
+}
+
+.history {
+  display: flex;
+  flex-direction: row;
 }

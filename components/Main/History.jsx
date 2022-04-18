@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import HistoryBubble from "../UI/HistoryBubble";
@@ -38,7 +39,8 @@ const History = (props) => {
   return (
     <>
       <div className={styles["history-container"]}>
-        {previousArtistsClicked}
+      
+        <div className={styles["history"]}>{previousArtistsClicked}</div>
       </div>
       <button onClick={checkVals}>click here :D </button>
     </>

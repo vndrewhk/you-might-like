@@ -9,9 +9,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addArtist } from "../../store/artistSlice";
 import History from "./History";
 
+import Collapse from "@mui/material/Collapse";
+import { Typography } from "@mui/material";
+
 const ArtistSuggestions = (props) => {
   // onClick, redo original fn with new artist
   const [artists, setArtists] = useState(props.artists);
+  const [showHistory, setShowHistory] = useState(false);
   const auth = useSelector((state) => state.auth);
   // make a redux store which pushes each clicked artist to the a store so you can follow the path down
   const previousArtists = useSelector((state) => state.artists);
@@ -103,14 +107,26 @@ const ArtistSuggestions = (props) => {
     console.log(artists);
   };
 
+  const toggleHistory = () => {
+    setShowHistory(!showHistory);
+  };
+
   return (
     <>
       {/* maybe use the length of the artist store, so that it will update eveyrtime something is added and i dont use math.random like a stinker teehee */}
       {/* have the last of the history highlighted */}
-      <History
-        fetchSimilarArtists={fetchSimilarArtists}
-        key={Math.random()}
-      ></History>
+      <div>
+        <Typography variant="h4" container="h4" onClick={toggleHistory}>
+          History
+        </Typography>
+        <Collapse in={showHistory}>
+          <History
+            fetchSimilarArtists={fetchSimilarArtists}
+            key={Math.random()}
+          ></History>
+        </Collapse>
+      </div>
+      {/* )} */}
       {artists && (
         <div className={styles["artist-suggestions"]}>{artistBubbles}</div>
       )}
