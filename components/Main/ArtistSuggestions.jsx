@@ -45,7 +45,15 @@ const ArtistSuggestions = (props) => {
       }
 
       const data = await response.json();
-      setArtists(data.artists);
+      // here we should filter the remaining similar artists by the id in history so we dont get duplicate artists
+      // setArtists(data.artists)
+      setArtists(
+        data.artists.filter((artist) =>
+          !previousArtists.artistHistory
+            .map((history) => history.id)
+            .includes(artist.id)
+        )
+      );
     } catch (err) {
       console.log(err);
     }
@@ -103,7 +111,12 @@ const ArtistSuggestions = (props) => {
     }
   });
   const checkVal = () => {
-    console.log(previousArtists);
+    console.log(previousArtists.artistHistory);
+    console.log(
+      previousArtists.artistHistory
+        .map((history) => history.id)
+        .includes(artists[0].id)
+    );
     console.log(artists);
   };
 
