@@ -2,13 +2,15 @@ import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
 import Autocomplete from "@mui/material/Autocomplete";
 import ArtistAutoComplete from "./ArtistAutoComplete";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const SearchBox = (props) => {
   const searchInput = useRef(null);
+  const [touched, setTouched] = useState(false);
   const submitArtistHandler = props.submitArtistHandler;
   // maybe do it onchange so its better for user
   const submitHandler = (e) => {
+    setTouched(true);
     e.preventDefault();
     submitArtistHandler(searchInput.current.value, e);
     // searchInput.current.value = "";
@@ -16,6 +18,7 @@ const SearchBox = (props) => {
 
   return (
     <div>
+      {!touched && <div>Start typing to see some artists!</div>}
       <Stack spacing={2} sx={{ width: 300 }}>
         <form onChange={submitHandler} onSubmit={submitHandler}>
           <Autocomplete

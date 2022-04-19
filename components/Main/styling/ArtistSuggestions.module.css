@@ -2,12 +2,16 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0px;
+  padding: 0px;
 }
 .artist-suggestions {
   display: flex;
   /* border: 2px solid green; */
   flex-wrap: wrap;
-  justify-content: center;
+  /* justify-content: center; */
+  margin: 0px;
+  padding: 0px;
 }
 
 .history-toggle {

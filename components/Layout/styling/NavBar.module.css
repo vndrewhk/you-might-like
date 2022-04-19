@@ -1,0 +1,10 @@
+.navBar {
+  border: 2px solid red;
+  /* background-image: linear-gradient(rgba(27, 27, 35, 1), rgba(27, 27, 35, 0)); */
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  height: 75px;
+  /* justify-content: space-between; */
+  max-width: 1250px;
+}
