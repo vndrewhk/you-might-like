@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/authSlice";
 import SearchBox from "../Search/SearchBox";
 import ArtistSuggestions from "./ArtistSuggestions";
+import styles from "./styling/MainBody.module.css";
 
 const MainBody = () => {
   const auth = useSelector((state) => state.auth);
@@ -62,7 +63,7 @@ const MainBody = () => {
   };
 
   return (
-    <div className="main-body">
+    <div className={styles["main-body"]}>
       {!auth.access_token && (
         <Button variant="contained" type="submit" onClick={handleLogin}>
           Connect to spotify

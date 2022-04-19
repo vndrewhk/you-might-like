@@ -18,7 +18,6 @@ const SearchBox = (props) => {
 
   return (
     <div>
-      {!touched && <div>Start typing to see some artists!</div>}
       <Stack spacing={2} sx={{ width: 300 }}>
         <form onChange={submitHandler} onSubmit={submitHandler}>
           <Autocomplete
@@ -40,6 +39,7 @@ const SearchBox = (props) => {
             )}
           />
         </form>
+        {!touched && <div>Start typing to see some artists!</div>}
       </Stack>
     </div>
   );

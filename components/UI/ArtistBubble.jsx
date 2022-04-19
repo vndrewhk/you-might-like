@@ -61,12 +61,6 @@ const ArtistBubble = (props) => {
         className={styles["artist-card"]}
         sx={{ maxWidth: 345, height: "100%", width: "100%" }}
       >
-        {/* <CardMedia
-          component="img"
-          height="140"
-          image={artistImage}
-          alt={artist.name}
-        /> */}
         <CardMedia height="140" sx={{ cursor: "pointer" }}>
           <Image
             onClick={clickNewArtist.bind(null, artist.id)}
@@ -78,37 +72,11 @@ const ArtistBubble = (props) => {
             objectFit="cover"
           ></Image>
         </CardMedia>
-        {/* <CardMedia>
-          <div style={{ position: "relative", width: "100%", height: "200px" }}>
-   
-            <ImageWithFallback
-              className={styles["artist-image"]}
-              onClick={clickNewArtist.bind(null, artist.id)}
-              alt="artist image"
-              // width="50"
-              // height="50"
-              layout="fill"
-              objectFit="contain"
-              fallbackSrc={fallBackImage}
-              src={artistImage}
-            ></ImageWithFallback>
-          </div>
-        </CardMedia> */}
+
         <CardContent sx={{ pointerEvents: "none" }}>
-          {/* <a
-            className={styles["artist-name"]}
-            href={artist.external_urls.spotify}
-            target="_blank"
-            rel="noopener noreferrer"
-          > */}
           <Typography gutterBottom variant="h5" component="div">
             {artist.name}
           </Typography>
-          {/* </a> */}
-          {/* <Typography variant="body2" color="text.secondary">
-            Lizards are a widespread group of squamate reptiles, with over 6,000
-            species, ranging across all continents except Antarctica
-          </Typography> */}
         </CardContent>
         <Genres artist={artist}>
           {artist.genres.length >= 3 ? (

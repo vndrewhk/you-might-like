@@ -5,9 +5,5 @@ import MainBody from "../components/Main/MainBody";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  return (
-    // <Layout>
-    <MainBody></MainBody>
-    // </Layout>
-  );
+  return <MainBody></MainBody>;
 }
