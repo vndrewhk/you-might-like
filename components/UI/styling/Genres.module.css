@@ -1,9 +1,10 @@
 .genre-container {
   display: flex;
-  border: 2px solid red;
+  /* border: 2px solid red; */
   width: 100%;
   flex-grow: 1;
   justify-content: center;
+  pointer-events: none;
 }
 .genre-tag {
   /* display: flex;

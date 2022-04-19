@@ -1,9 +1,39 @@
 .artist-bubble {
   display: flex;
   flex-direction: column;
-  border: 2px solid black;
+  /* border: 2px solid black; */
   align-items: center;
+  justify-content: stretch;
   width: 200px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+/* .artist-bubble {
+  margin-bottom: 25px;
+} */
+
+.artist-bubble :hover {
+  -webkit-transform: scale(1.01);
+  transform: scale(1.01);
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.artist-bubble :hover .artist-card {
+  border: 2px solid #5b5baa;
+  -webkit-box-shadow: 5px 5px 20px 5px #38385f;
+  box-shadow: 5px 5px 20px 5px #38385f;
+}
+
+.artist-bubble :not(:hover) {
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+.artist-bubble a {
+  text-decoration: none;
 }
 
 .artist-info {

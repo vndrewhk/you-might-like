@@ -13,7 +13,7 @@ import { addArtist, addGenres, resetArtists } from "../../store/artistSlice";
 import History from "./History";
 
 import Collapse from "@mui/material/Collapse";
-import { Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 
 const ArtistSuggestions = (props) => {
   // onClick, redo original fn with new artist
@@ -138,7 +138,7 @@ const ArtistSuggestions = (props) => {
   };
 
   return (
-    <>
+    <div className={styles["suggestion-container"]}>
       {/* maybe use the length of the artist store, so that it will update eveyrtime something is added and i dont use math.random like a stinker teehee */}
       {/* have the last of the history highlighted */}
       <div>
@@ -160,14 +160,18 @@ const ArtistSuggestions = (props) => {
           <button onClick={clearHistory}>Clear History</button>
         </Collapse>
       </div>
-      {artists && (
-        <div className={styles["artist-suggestions"]}>{artistBubbles}</div>
-      )}
+      <Grid container alignItems="stretch">
+        {artists && (
+          <Grid item style={{ display: "flex" }}>
+            <div className={styles["artist-suggestions"]}>{artistBubbles}</div>
+          </Grid>
+        )}
+      </Grid>
       <button onClick={checkVal}>check store</button>
       <button onClick={addGenre.bind(null, "indie poptronica")}>
         add genre
       </button>
-    </>
+    </div>
   );
 };
 

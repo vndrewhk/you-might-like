@@ -1,7 +1,13 @@
+.suggestion-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .artist-suggestions {
   display: flex;
-  border: 2px solid green;
+  /* border: 2px solid green; */
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .history-toggle {
