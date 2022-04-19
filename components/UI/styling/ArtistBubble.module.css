@@ -36,6 +36,14 @@
   text-decoration: none;
 }
 
+.artist-card {
+  position: relative;
+  padding-bottom: 50px;
+}
+.artist-card:last-child {
+  margin-top: auto;
+}
+
 .artist-info {
   /* flex-grow: 1; */
   display: flex;
@@ -67,4 +75,9 @@
 } */
 .genres {
   /* flex-grow: 1; */
+}
+
+.spotify-link {
+  position: absolute;
+  bottom: 0;
 }

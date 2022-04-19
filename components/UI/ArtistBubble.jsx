@@ -120,7 +120,7 @@ const ArtistBubble = (props) => {
           )}
         </Genres>
         {/* <button onClick={verifyImage}>image check</button> */}
-        <CardActions>
+        <CardActions className={styles["spotify-link"]}>
           <a
             href={artist.external_urls.spotify}
             target="_blank"
