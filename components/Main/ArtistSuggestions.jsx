@@ -9,7 +9,7 @@ import fallBackImage from "../../assets/default-profile.png";
 import ArtistBubble from "../UI/ArtistBubble";
 import styles from "./styling/ArtistSuggestions.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addArtist, resetArtists } from "../../store/artistSlice";
+import { addArtist, addGenres, resetArtists } from "../../store/artistSlice";
 import History from "./History";
 
 import Collapse from "@mui/material/Collapse";
@@ -133,6 +133,10 @@ const ArtistSuggestions = (props) => {
     setShowHistory(!showHistory);
   };
 
+  const addGenre = (genre) => {
+    dispatch(addGenres(genre));
+  };
+
   return (
     <>
       {/* maybe use the length of the artist store, so that it will update eveyrtime something is added and i dont use math.random like a stinker teehee */}
@@ -160,6 +164,9 @@ const ArtistSuggestions = (props) => {
         <div className={styles["artist-suggestions"]}>{artistBubbles}</div>
       )}
       <button onClick={checkVal}>check store</button>
+      <button onClick={addGenre.bind(null, "indie poptronica")}>
+        add genre
+      </button>
     </>
   );
 };
