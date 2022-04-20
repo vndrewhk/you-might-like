@@ -17,7 +17,7 @@ const NavBar = () => {
   return (
     <div className={styles["navBar"]}>
       <Link className={styles["mainNav"]} href="/" passHref>
-        <h2 className={styles["hover-underline-animation"]}>Home</h2>
+        <h2 className={styles["hover-underline-animation"]}>You Might Like...</h2>
       </Link>
       <div className={styles["headerLinks"]}>
         {/* <Link c href="/settings" passHref>
