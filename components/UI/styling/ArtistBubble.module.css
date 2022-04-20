@@ -20,12 +20,14 @@
   transform: scale(1.01);
   -webkit-transition: 0.2s;
   transition: 0.2s;
+  background-color: #303b27;
 }
 
 .artist-bubble :hover .artist-card {
   border: 2px solid #5b5baa;
   -webkit-box-shadow: 5px 5px 20px 5px #38385f;
   box-shadow: 5px 5px 20px 5px #38385f;
+  background-color: #303b27;
 }
 
 .artist-bubble :not(:hover) {
