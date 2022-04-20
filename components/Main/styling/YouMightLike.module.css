@@ -1,0 +1,9 @@
+.you-might-like {
+}
+
+.artist-image {
+  border-radius: 20px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

@@ -14,6 +14,7 @@ import History from "./History";
 
 import Collapse from "@mui/material/Collapse";
 import { Grid, Typography } from "@mui/material";
+import YouMightLike from "./YouMightLike";
 
 const ArtistSuggestions = (props) => {
   // onClick, redo original fn with new artist
@@ -157,9 +158,10 @@ const ArtistSuggestions = (props) => {
             fetchSimilarArtists={fetchSimilarArtists}
             key={Math.random()}
           ></History>
-          <button onClick={clearHistory}>Clear History</button>
+          {/* <button onClick={clearHistory}>Clear History</button> */}
         </Collapse>
       </div>
+      <YouMightLike key={Math.random()}></YouMightLike>
       <Grid container alignItems="stretch">
         {artists && (
           <Grid item style={{ display: "flex" }}>
@@ -167,10 +169,6 @@ const ArtistSuggestions = (props) => {
           </Grid>
         )}
       </Grid>
-      <button onClick={checkVal}>check store</button>
-      <button onClick={addGenre.bind(null, "indie poptronica")}>
-        add genre
-      </button>
     </div>
   );
 };

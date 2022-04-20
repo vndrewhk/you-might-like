@@ -52,7 +52,7 @@ const History = (props) => {
           <div className={styles["history"]}>{previousArtistsClicked}</div>
         </div>
         {/* <button onClick={clearHistory}>Clear History</button> */}
-        <button onClick={checkVals}>click here :D </button>
+        {/* <button onClick={checkVals}>click here :D </button> */}
       </>
     )
   );

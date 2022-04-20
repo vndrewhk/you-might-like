@@ -64,19 +64,19 @@ const MainBody = () => {
 
   return (
     <div className={styles["main-body"]}>
-      {!auth.access_token && (
+      {/* {!auth.access_token && (
         <Button variant="contained" type="submit" onClick={handleLogin}>
           Connect to spotify
         </Button>
-      )}
+      )} */}
 
       {/* use redux for a login state */}
 
       {auth.access_token && (
         <>
-          <Button onClick={handleLogout} variant="contained" type="submit">
+          {/* <Button onClick={handleLogout} variant="contained" type="submit">
             Logout
-          </Button>
+          </Button> */}
 
           {/* use a key to update history everytime state is updated */}
 

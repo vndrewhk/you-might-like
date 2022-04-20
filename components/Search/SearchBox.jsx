@@ -4,6 +4,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 import ArtistAutoComplete from "./ArtistAutoComplete";
 import { useRef, useState } from "react";
 
+import styles from "./styling/Searchbox.module.css";
+
 const SearchBox = (props) => {
   const searchInput = useRef(null);
   const [touched, setTouched] = useState(false);
@@ -17,7 +19,7 @@ const SearchBox = (props) => {
   };
 
   return (
-    <div>
+    <div className={styles["search-box-container"]}>
       <Stack spacing={2} sx={{ width: 300 }}>
         <form onChange={submitHandler} onSubmit={submitHandler}>
           <Autocomplete
