@@ -21,6 +21,7 @@
   -webkit-transition: 0.2s;
   transition: 0.2s;
   background-color: #303b27;
+  
 }
 
 .artist-bubble :hover .artist-card {

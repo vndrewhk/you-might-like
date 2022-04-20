@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/authSlice";
 import styles from "./styling/NavBar.module.css";
+import { styled } from "@mui/system";
 
 const NavBar = () => {
   const auth = useSelector((state) => state.auth);
@@ -19,19 +20,63 @@ const NavBar = () => {
         <h2 className={styles["hover-underline-animation"]}>Home</h2>
       </Link>
       <div className={styles["headerLinks"]}>
-        <Link c href="/settings" passHref>
+        {/* <Link c href="/settings" passHref>
           <span className={`${styles["hover-underline-animation"]}`}>
             Settings
           </span>
-        </Link>
+        </Link> */}
         {!auth.access_token && (
-          <Button variant="contained" type="submit" onClick={handleLogin}>
+          <Button
+            className={`${styles["hover-underline-animation"]}`}
+            sx={{
+              boxShadow: 1,
+              borderRadius: 2,
+              p: 2,
+              height: 45,
+              fontSize: 11,
+              minWidth: 150,
+              color: "black",
+              backgroundColor: "#1fdf64",
+              border: "2px solid black",
+              padding: 0,
+              "&:hover": {
+                color: "black",
+                border: "2px solid white",
+                backgroundColor: "#42ed80",
+              },
+            }}
+            variant="contained"
+            type="submit"
+            onClick={handleLogin}
+          >
             Connect to spotify
           </Button>
         )}
         {auth.access_token && (
           <>
-            <Button onClick={handleLogout} variant="contained" type="submit">
+            <Button
+              sx={{
+                boxShadow: 1,
+
+                borderRadius: 2,
+                p: 2,
+
+                color: "black",
+                padding: 0,
+                height: 30,
+                fontSize: 11,
+                minWidth: 150,
+                backgroundColor: "#1fdf64",
+                "&:hover": {
+                  color: "black",
+                  border: "2px solid white",
+                  backgroundColor: "#42ed80",
+                },
+              }}
+              onClick={handleLogout}
+              variant="contained"
+              type="submit"
+            >
               Logout
             </Button>
           </>

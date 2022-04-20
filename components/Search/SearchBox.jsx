@@ -31,7 +31,15 @@ const SearchBox = (props) => {
             renderInput={(params) => (
               <TextField
                 inputRef={searchInput}
+                variant="outlined"
+                color="success"
                 {...params}
+                sx={{
+                  input: { color: "white" },
+                  label: { color: "white" },
+                  // borderColor: "white"
+                  // border: "1px solid white",
+                }}
                 label="Search Artist..."
                 InputProps={{
                   ...params.InputProps,

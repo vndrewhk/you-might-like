@@ -11,7 +11,7 @@ import styles from "./styling/ArtistSuggestions.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addArtist, addGenres, resetArtists } from "../../store/artistSlice";
 import History from "./History";
-
+import Fade from "react-reveal/Fade";
 import Collapse from "@mui/material/Collapse";
 import { Grid, Typography } from "@mui/material";
 import YouMightLike from "./YouMightLike";
@@ -20,6 +20,7 @@ const ArtistSuggestions = (props) => {
   // onClick, redo original fn with new artist
   const [artists, setArtists] = useState(props.artists);
   const [showHistory, setShowHistory] = useState(false);
+  const [justSearched, setJustSearched] = useState(props.justSearched);
   const auth = useSelector((state) => state.auth);
   // make a redux store which pushes each clicked artist to the a store so you can follow the path down
   const previousArtists = useSelector((state) => state.artists);
@@ -59,6 +60,7 @@ const ArtistSuggestions = (props) => {
               .includes(artist.id)
         )
       );
+      setJustSearched(false);
     } catch (err) {
       console.log(err);
     }
@@ -161,7 +163,15 @@ const ArtistSuggestions = (props) => {
           {/* <button onClick={clearHistory}>Clear History</button> */}
         </Collapse>
       </div>
-      <YouMightLike key={Math.random()}></YouMightLike>
+      {!justSearched && (
+        <div className={styles["YML-container"]}>
+          <span>You like &nbsp;</span>
+          <Fade>
+            <YouMightLike key={Math.random()}></YouMightLike>
+          </Fade>
+          <span>&nbsp; so you might like...</span>
+        </div>
+      )}
       <Grid container alignItems="stretch">
         {artists && (
           <Grid item style={{ display: "flex" }}>

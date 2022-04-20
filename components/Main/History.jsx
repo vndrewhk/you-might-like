@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import HistoryBubble from "../UI/HistoryBubble";
 import styles from "./styling/History.module.css";
-
+import fallBackImage from "../../assets/default-profile.png";
 const History = (props) => {
   const previousArtists = useSelector((state) => state.artists);
   const [artistHistory, setArtistHistory] = useState(previousArtists);
@@ -28,6 +28,7 @@ const History = (props) => {
     } else {
       return (
         <HistoryBubble
+          fetchSimilarArtists={props.fetchSimilarArtists}
           artist={artist}
           clickNewArtist={clickNewArtist}
           artistImage={fallBackImage}

@@ -9,6 +9,7 @@ import styles from "./styling/MainBody.module.css";
 const MainBody = () => {
   const auth = useSelector((state) => state.auth);
   const [artistInfo, setArtistInfo] = useState();
+  const [justSearched, setJustSearched] = useState(false);
   // cant do it here because it would change what shows up on the suggestions
   // probably do a separate component so that it does not affect teh search results
   // const previousArtists = useSelector((state) => state.artists);
@@ -42,6 +43,7 @@ const MainBody = () => {
 
         const data = await response.json();
         setArtistInfo(data.artists);
+        setJustSearched(true);
       } catch (err) {
         console.log(err);
       }
@@ -83,11 +85,12 @@ const MainBody = () => {
           <SearchBox submitArtistHandler={submitArtistHandler}></SearchBox>
           {artistInfo && (
             <ArtistSuggestions
+              justSearched={justSearched}
               key={Math.random()}
               artists={artistInfo.items}
             ></ArtistSuggestions>
           )}
-          <button onClick={logInfo}>log info</button>
+          {/* <button onClick={logInfo}>log info</button> */}
         </>
       )}
     </div>
