@@ -5,20 +5,16 @@ import styles from "./styling/NavBar.module.css";
 const NavBar = () => {
   return (
     <div className={styles["navBar"]}>
-      <Link href="/">Home</Link>
-      <Link href="/settings">Settings</Link>
-      {/* <Link href="/redirect">Redirect</Link> */}
-      {/* style={{ textDecoration: "none" }} */}
-      {/* <NavLink className="mainNav" to="/" title="Home|Andrew Ma">
-        <h2 className="hover-underline-animation">Andrew Ma</h2>
-      </NavLink>
-      <div className="headerLinks">
-        <NavLink to="/about" title="About|Andrew Ma">
-          <span className="hover-underline-animation">About</span>
-        </NavLink>
-        <NavLink to="/resume">
-          <span className="hover-underline-animation">Resume</span>
-        </NavLink> */}
+      <Link className={styles["mainNav"]} href="/" passHref>
+        <h2 className={styles["hover-underline-animation"]}>Home</h2>
+      </Link>
+      <div className={styles["headerLinks"]}>
+        <Link c href="/settings" passHref>
+          <span className={`${styles["hover-underline-animation"]}`}>
+            Settings
+          </span>
+        </Link>
+      </div>
     </div>
   );
 };
