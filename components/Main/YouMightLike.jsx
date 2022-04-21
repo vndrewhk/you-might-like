@@ -33,7 +33,7 @@ const YouMightLike = (props) => {
           ></ImageWithFallback> */}
 
           {/* {artistHistory[artistHistory.length - 1].name} */}
-          {props.currentArtist}
+          <strong>{props.currentArtist}</strong>
           {/* {artistHistory[artistHistory.length - 1].name} so you might like ...
           </Typography> */}
           {/* <div onClick={checkVals}>check vals</div> */}
