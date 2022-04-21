@@ -1,4 +1,6 @@
 .main-body {
   /* background-color: #1f1d1d; */
+  padding-top: 100px;
   margin-bottom: 5rem;
+  min-height: 80vh;
 }

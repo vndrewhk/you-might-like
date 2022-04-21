@@ -1,0 +1,25 @@
+.unlogged-container {
+  display: flex;
+  flex-direction: column;
+  /* border: 2px solid red; */
+  align-items: center;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 2px solid rgb(45, 45, 66);
+  width: 100%;
+  padding-bottom: 50px;
+}
+
+.logo-text {
+  color: #1fdf64;
+}
+
+.try-out {
+  display: flex;
+  flex-direction: column;
+  padding-top: 50px;
+}

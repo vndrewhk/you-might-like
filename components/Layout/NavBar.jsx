@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../store/authSlice";
 import styles from "./styling/NavBar.module.css";
-import { styled } from "@mui/system";
 
 const NavBar = () => {
   const auth = useSelector((state) => state.auth);

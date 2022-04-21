@@ -1,6 +1,6 @@
 html,
 body {
-  background-color: #0D0D0D;
+  background-color: #0d0d0d;
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
@@ -21,3 +21,31 @@ a {
 }
 /*# sourceMappingURL=glob
 als.css.map */
+
+.typewriter-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 120px;
+  margin-bottom: 0.5rem;
+}
+.typewriters {
+  border-bottom: 2px solid rgb(45, 45, 66);
+  width: 100%;
+  /* background-color: rgb(45, 45, 66); */
+}
+.wrap {
+  display: inline-flex;
+}
+
+.Typewriter {
+  display: flex;
+  align-items: center;
+  min-height: 100%;
+  font-size: 25px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+}
+.Typewriter__cursor {
+  font-size: 30px;
+}

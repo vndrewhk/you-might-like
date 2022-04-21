@@ -5,6 +5,7 @@ import { logout } from "../../store/authSlice";
 import SearchBox from "../Search/SearchBox";
 import ArtistSuggestions from "./ArtistSuggestions";
 import styles from "./styling/MainBody.module.css";
+import UnloggedHome from "./UnloggedHome";
 
 const MainBody = () => {
   const auth = useSelector((state) => state.auth);
@@ -66,11 +67,14 @@ const MainBody = () => {
 
   return (
     <div className={styles["main-body"]}>
-      {/* {!auth.access_token && (
-        <Button variant="contained" type="submit" onClick={handleLogin}>
-          Connect to spotify
-        </Button>
-      )} */}
+      {!auth.access_token && (
+        <>
+          {/* <Button variant="contained" type="submit" onClick={handleLogin}>
+            Connect to spotify
+          </Button> */}
+          <UnloggedHome></UnloggedHome>
+        </>
+      )}
 
       {/* use redux for a login state */}
 

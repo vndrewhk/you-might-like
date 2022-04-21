@@ -21,7 +21,8 @@
     "react-dom": "18.0.0",
     "react-headroom": "^3.2.0",
     "react-redux": "^7.2.8",
-    "react-reveal": "^1.2.2"
+    "react-reveal": "^1.2.2",
+    "typewriter-effect": "^2.18.2"
   },
   "devDependencies": {
     "eslint": "8.13.0",
