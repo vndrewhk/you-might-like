@@ -1,7 +1,7 @@
 import { Fade, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import Button from "@mui/material/Button";
 import HistoryBubble from "../UI/HistoryBubble";
 import styles from "./styling/History.module.css";
 import fallBackImage from "../../assets/default-profile.png";
@@ -56,7 +56,9 @@ const History = (props) => {
         <div className={styles["history-container"]}>
           <div className={styles["history"]}>{previousArtistsClicked}</div>
         </div>
-        <button onClick={clearHistory}>Clear History</button>
+        <Button color="secondary" onClick={clearHistory} variant="outlined">
+          Clear History
+        </Button>
         {/* <button onClick={checkVals}>click here :D </button> */}
       </>
     )

@@ -11,10 +11,6 @@ const MainBody = () => {
   const auth = useSelector((state) => state.auth);
   const [artistInfo, setArtistInfo] = useState();
   const [justSearched, setJustSearched] = useState(false);
-  // cant do it here because it would change what shows up on the suggestions
-  // probably do a separate component so that it does not affect teh search results
-  // const previousArtists = useSelector((state) => state.artists);
-  // const [artistHistory, setArtistHistory] = useState(previousArtists);
 
   const submitArtistHandler = (searchInput, e) => {
     e.preventDefault();
@@ -86,9 +82,13 @@ const MainBody = () => {
 
           {/* use a key to update history everytime state is updated */}
 
-          <SearchBox submitArtistHandler={submitArtistHandler}></SearchBox>
+          <SearchBox
+            // clicked={clicked}
+            submitArtistHandler={submitArtistHandler}
+          ></SearchBox>
           {artistInfo && (
             <ArtistSuggestions
+              // clickArtistHandler={clickArtistHandler}
               justSearched={justSearched}
               key={Math.random()}
               artists={artistInfo.items}

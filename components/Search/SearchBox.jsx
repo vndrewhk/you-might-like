@@ -8,8 +8,6 @@ import Alert from "@mui/material/Alert";
 import AlertTitle from "@mui/material/AlertTitle";
 import styles from "./styling/Searchbox.module.css";
 import SearchIcon from "@mui/icons-material/Search";
-import { InputAdornment } from "@mui/material";
-import { pink } from "@mui/material/colors";
 
 const SearchBox = (props) => {
   const searchInput = useRef(null);
@@ -68,9 +66,20 @@ const SearchBox = (props) => {
         {!touched && (
           <Alert severity="info">
             <AlertTitle>Info</AlertTitle>
-            This is an info alert — <strong>check it out!</strong>
+            Start searching for an&nbsp;
+            <strong>artist!</strong>
           </Alert>
         )}
+        {/* {touched && !props.clicked && (
+          <Alert
+            sx={{ width: "23rem", marginLeft: "auto", marginRight: "auto" }}
+            severity="info"
+          >
+            <AlertTitle>Info</AlertTitle>
+            Now click a card for some&nbsp;
+            <strong>recommendations!</strong>
+          </Alert>
+        )} */}
       </Stack>
     </div>
   );

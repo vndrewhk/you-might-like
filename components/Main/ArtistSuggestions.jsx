@@ -101,6 +101,7 @@ const ArtistSuggestions = (props) => {
     fetchSelectedArtist(id);
     console.log(name);
     setCurrentArtist(name);
+    // props.clickArtistHandler();
   };
   // should keep track of the genres counted using a hashmap, and then display it as a side value as well
   // https://developer.spotify.com/documentation/web-api/reference/#/operations/get-recommendations
@@ -133,6 +134,10 @@ const ArtistSuggestions = (props) => {
     console.log(name);
     setCurrentArtist(name);
   };
+  const clearHistory = () => {
+    dispatch(resetArtists());
+    toggleHistory();
+  };
 
   return (
     <div className={styles["suggestion-container"]}>
@@ -149,8 +154,9 @@ const ArtistSuggestions = (props) => {
           {!showHistory && <KeyboardDoubleArrowDown></KeyboardDoubleArrowDown>}
           {showHistory && <KeyboardDoubleArrowUp></KeyboardDoubleArrowUp>}
         </Typography>
-        <Collapse in={showHistory}>
+        <Collapse in={showHistory} className={styles["history-toggle-wrapper"]}>
           <History
+            clearHistory={clearHistory}
             clickHistoryHandler={clickHistoryHandler}
             fetchSimilarArtists={fetchSimilarArtists}
             key={Math.random()}

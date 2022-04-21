@@ -16,6 +16,17 @@
 
 .history-toggle {
   cursor: pointer;
+  border-top: 2px solid rgb(80, 87, 122);
+  border-left: 2px solid rgb(80, 87, 122);
+  border-right: 2px solid rgb(80, 87, 122);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  width: fit-content;
+  background-image: linear-gradient(rgb(45, 45, 66, 0), rgba(45, 45, 66));
+}
+.history-toggle-wrapper {
+  background-image: linear-gradient(rgb(45, 45, 66), rgba(27, 27, 35, 0));
+  border-top-right-radius: 10px;
 }
 
 .YML-container {

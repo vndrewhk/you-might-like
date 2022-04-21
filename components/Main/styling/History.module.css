@@ -1,13 +1,17 @@
+
+
 .history-container {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   margin-top: 15px;
   margin-bottom: 15px;
+  border-bottom: 2px solid rgb(80, 87, 122);
 }
 
 .history {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  /* background-image: linear-gradient(rgb(45, 45, 66), rgba(27, 27, 35, 0)); */
 }
