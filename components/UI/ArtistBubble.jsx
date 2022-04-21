@@ -64,6 +64,7 @@ const ArtistBubble = (props) => {
           height: "100%",
           width: "100%",
           backgroundColor: "#2d4619",
+          color: "white",
         }}
       >
         <CardMedia height="140" sx={{ cursor: "pointer" }}>
@@ -79,7 +80,12 @@ const ArtistBubble = (props) => {
         </CardMedia>
 
         <CardContent sx={{ pointerEvents: "none" }}>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography
+            sx={{ color: "white" }}
+            gutterBottom
+            variant="h5"
+            component="div"
+          >
             {artist.name}
           </Typography>
         </CardContent>

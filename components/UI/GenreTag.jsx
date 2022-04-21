@@ -5,7 +5,7 @@ const GenreTag = (props) => {
   return (
     <Chip
       label={props.children}
-      sx={{ backgroundColor: "#045471" }}
+      sx={{ backgroundColor: "#045471", color: "white",border:"2px solid rgb(185, 181, 181)" }}
       className={styles["genre-tag"]}
     ></Chip>
   );
