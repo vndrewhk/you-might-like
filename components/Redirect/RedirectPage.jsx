@@ -20,14 +20,20 @@ const RedirectPage = () => {
   };
 
   //   store asPath in localstorage
+  // http://localhost:3000/redirect?error=access_denied
+
   useEffect(() => {
     localStorage.clear();
-    localStorage.setItem("access_token", `${accessToken[0]}`);
-    localStorage.setItem("token_type", "Bearer");
-    localStorage.setItem("expires_in", "3600");
-    loginHandler(accessToken[0]);
-    // console.log(authActions.login);
-    router.replace("/");
+    if (pid.includes("error")) {
+      router.replace("/error");
+    } else {
+      localStorage.setItem("access_token", `${accessToken[0]}`);
+      localStorage.setItem("token_type", "Bearer");
+      localStorage.setItem("expires_in", "3600");
+      loginHandler(accessToken[0]);
+      // console.log(authActions.login);
+      router.replace("/");
+    }
   }, []);
   return <div>Please waiting...redirecting..</div>;
 };

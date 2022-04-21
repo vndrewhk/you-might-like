@@ -13,7 +13,7 @@ a {
 }
 
 * {
-  color: white;
+  /* color: white; */
   scrollbar-color: #737380 #333333;
   scrollbar-width: thin;
   -webkit-box-sizing: border-box;
@@ -48,4 +48,8 @@ als.css.map */
 }
 .Typewriter__cursor {
   font-size: 30px;
+}
+
+.error-button {
+  color: green;
 }

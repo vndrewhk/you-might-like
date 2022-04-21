@@ -63,7 +63,7 @@ const ArtistBubble = (props) => {
           maxWidth: 345,
           height: "100%",
           width: "100%",
-          backgroundColor: "#2c3128",
+          backgroundColor: "#2d4619",
         }}
       >
         <CardMedia height="140" sx={{ cursor: "pointer" }}>

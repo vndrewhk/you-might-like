@@ -4,6 +4,8 @@ import Autocomplete from "@mui/material/Autocomplete";
 import ArtistAutoComplete from "./ArtistAutoComplete";
 import { useRef, useState } from "react";
 
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
 import styles from "./styling/Searchbox.module.css";
 import SearchIcon from "@mui/icons-material/Search";
 import { InputAdornment } from "@mui/material";
@@ -36,13 +38,13 @@ const SearchBox = (props) => {
             renderInput={(params) => (
               <TextField
                 inputRef={searchInput}
-                variant="outlined"
+                variant="filled"
                 color="success"
                 {...params}
                 sx={{
-                  input: { color: "white" },
-                  label: { color: "white" },
-                  backgroundColor: "#9bc99b",
+                  input: { color: "gray" },
+                  label: { color: "black" },
+                  backgroundColor: "white",
 
                   borderRadius: 5,
                   // borderColor: "white"
@@ -54,7 +56,7 @@ const SearchBox = (props) => {
                   type: "search",
                   startAdornment: (
                     // <InputAdornment position="start">
-                    <SearchIcon color="secondary" sx={{ color: pink[500] }} />
+                    <SearchIcon color="secondary" sx={{ color: "black" }} />
                     // </InputAdornment>
                   ),
                 }}
@@ -62,7 +64,13 @@ const SearchBox = (props) => {
             )}
           />
         </form>
-        {!touched && <div>Start typing to see some artists!</div>}
+
+        {!touched && (
+          <Alert severity="info">
+            <AlertTitle>Info</AlertTitle>
+            This is an info alert — <strong>check it out!</strong>
+          </Alert>
+        )}
       </Stack>
     </div>
   );
