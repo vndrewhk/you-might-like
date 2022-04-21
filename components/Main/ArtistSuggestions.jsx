@@ -20,6 +20,9 @@ const ArtistSuggestions = (props) => {
   // onClick, redo original fn with new artist
   const [artists, setArtists] = useState(props.artists);
   const [showHistory, setShowHistory] = useState(false);
+
+  const [currentArtist, setCurrentArtist] = useState(null);
+
   const [justSearched, setJustSearched] = useState(props.justSearched);
   const auth = useSelector((state) => state.auth);
   // make a redux store which pushes each clicked artist to the a store so you can follow the path down
@@ -91,11 +94,13 @@ const ArtistSuggestions = (props) => {
     }
   };
   // https://developer.spotify.com/console/get-artist/?id=1FBER7ufQj5dCXxUgyKplP
-  const clickNewArtist = (id) => {
+  const clickNewArtist = (id, name) => {
     console.log(id);
     fetchSimilarArtists(id);
     // add to redux
     fetchSelectedArtist(id);
+    console.log(name);
+    setCurrentArtist(name);
   };
   // should keep track of the genres counted using a hashmap, and then display it as a side value as well
   // https://developer.spotify.com/documentation/web-api/reference/#/operations/get-recommendations
@@ -118,26 +123,15 @@ const ArtistSuggestions = (props) => {
       );
     }
   });
-  const checkVal = () => {
-    console.log(previousArtists.artistHistory);
-    console.log(
-      previousArtists.artistHistory
-        .map((history) => history.id)
-        .includes(artists[0].id)
-    );
-    console.log(artists);
-  };
 
   const toggleHistory = () => {
     setShowHistory(!showHistory);
   };
-  const clearHistory = () => {
-    dispatch(resetArtists());
-    setShowHistory(!showHistory);
-  };
 
-  const addGenre = (genre) => {
-    dispatch(addGenres(genre));
+  const clickHistoryHandler = (id, name) => {
+    fetchSimilarArtists(id);
+    console.log(name);
+    setCurrentArtist(name);
   };
 
   return (
@@ -157,17 +151,19 @@ const ArtistSuggestions = (props) => {
         </Typography>
         <Collapse in={showHistory}>
           <History
+            clickHistoryHandler={clickHistoryHandler}
             fetchSimilarArtists={fetchSimilarArtists}
             key={Math.random()}
           ></History>
           {/* <button onClick={clearHistory}>Clear History</button> */}
         </Collapse>
       </div>
+      {/* <button>{currentArtist}</button> */}
       {!justSearched && (
         <div className={styles["YML-container"]}>
           <span>You like &nbsp;</span>
-          <Fade>
-            <YouMightLike key={Math.random()}></YouMightLike>
+          <Fade key={currentArtist}>
+            <YouMightLike currentArtist={currentArtist}></YouMightLike>
           </Fade>
           <span>&nbsp; so you might like...</span>
         </div>

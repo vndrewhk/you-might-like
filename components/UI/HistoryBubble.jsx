@@ -7,6 +7,7 @@ const HistoryBubble = (props) => {
   const clickNewArtist = props.fetchSimilarArtists;
   const artistImage = props.artistImage;
 
+  const clickHistoryHandler = props.clickHistoryHandler;
   return (
     // <Fade in={true}>
     // <Fade top>
@@ -17,7 +18,7 @@ const HistoryBubble = (props) => {
       <div className={styles["artist-image-container"]}>
         <ImageWithFallback
           className={styles["artist-image"]}
-          onClick={clickNewArtist.bind(null, artist.id)}
+          onClick={clickHistoryHandler.bind(null, artist.id, artist.name)}
           alt={artist.name}
           width="50"
           height="50"

@@ -68,7 +68,7 @@ const ArtistBubble = (props) => {
       >
         <CardMedia height="140" sx={{ cursor: "pointer" }}>
           <Image
-            onClick={clickNewArtist.bind(null, artist.id)}
+            onClick={clickNewArtist.bind(null, artist.id, artist.name)}
             src={artistImage}
             alt={artist.name}
             width="100%"

@@ -5,6 +5,9 @@ import ArtistAutoComplete from "./ArtistAutoComplete";
 import { useRef, useState } from "react";
 
 import styles from "./styling/Searchbox.module.css";
+import SearchIcon from "@mui/icons-material/Search";
+import { InputAdornment } from "@mui/material";
+import { pink } from "@mui/material/colors";
 
 const SearchBox = (props) => {
   const searchInput = useRef(null);
@@ -17,6 +20,8 @@ const SearchBox = (props) => {
     submitArtistHandler(searchInput.current.value, e);
     // searchInput.current.value = "";
   };
+
+  // textfield styling
 
   return (
     <div className={styles["search-box-container"]}>
@@ -37,13 +42,21 @@ const SearchBox = (props) => {
                 sx={{
                   input: { color: "white" },
                   label: { color: "white" },
+                  backgroundColor: "#9bc99b",
+
+                  borderRadius: 5,
                   // borderColor: "white"
                   // border: "1px solid white",
                 }}
-                label="Search Artist..."
+                label="Artists.."
                 InputProps={{
                   ...params.InputProps,
                   type: "search",
+                  startAdornment: (
+                    // <InputAdornment position="start">
+                    <SearchIcon color="secondary" sx={{ color: pink[500] }} />
+                    // </InputAdornment>
+                  ),
                 }}
               />
             )}

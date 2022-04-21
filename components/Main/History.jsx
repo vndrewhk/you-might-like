@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import HistoryBubble from "../UI/HistoryBubble";
 import styles from "./styling/History.module.css";
 import fallBackImage from "../../assets/default-profile.png";
+import { resetArtists } from "../../store/artistSlice";
 const History = (props) => {
   const previousArtists = useSelector((state) => state.artists);
   const [artistHistory, setArtistHistory] = useState(previousArtists);
@@ -15,12 +16,15 @@ const History = (props) => {
     console.log(id);
   };
 
+  // const clickHistoryHandler = props.clickHistoryHandler;
+
   const previousArtistsClicked = artistHistory.artistHistory.map((artist) => {
     if (artist.images.length >= 1) {
       return (
         <HistoryBubble
           fetchSimilarArtists={props.fetchSimilarArtists}
           artist={artist}
+          clickHistoryHandler={props.clickHistoryHandler}
           clickNewArtist={clickNewArtist}
           artistImage={artist.images[0].url}
         ></HistoryBubble>
@@ -42,17 +46,17 @@ const History = (props) => {
     console.log(artistHistory.artistHistory.map((artist) => artist.genres));
   };
 
-  // const clearHistory = () => {
-  //   dispatch(resetArtists());
-  //   console.log("hi");
-  // };
+  const clearHistory = () => {
+    dispatch(resetArtists());
+    console.log("hi");
+  };
   return (
     artistHistory.artistHistory.length > 0 && (
       <>
         <div className={styles["history-container"]}>
           <div className={styles["history"]}>{previousArtistsClicked}</div>
         </div>
-        {/* <button onClick={clearHistory}>Clear History</button> */}
+        <button onClick={clearHistory}>Clear History</button>
         {/* <button onClick={checkVals}>click here :D </button> */}
       </>
     )
